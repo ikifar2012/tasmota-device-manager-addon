@@ -10,7 +10,7 @@
   "init": false,
   "ingress": true,
   "ingress_entry": "novnc/vnc_lite.html",
-  "image": "ikifar/tdm-ha-adddon"
+  "image": "ikifar/tdm-ha-adddon",
   "map": ["share:rw"],
   "ports": {
     "5900/tcp": null
