@@ -4,9 +4,9 @@
 # https://aka.ms/yaml
 variables:
   - name: REPO
-    value: ha-addon-template
+    value: tasmota-device-manager-addon
   - name: ADDON
-    value: addon
+    value: tdm
 trigger:
 - master
 pr: none

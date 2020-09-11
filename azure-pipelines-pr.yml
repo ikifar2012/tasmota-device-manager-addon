@@ -7,7 +7,7 @@
 # - master
 variables:
   - name: ADDON
-    value: addon
+    value: tdm
 pr:
   branches:
     include:

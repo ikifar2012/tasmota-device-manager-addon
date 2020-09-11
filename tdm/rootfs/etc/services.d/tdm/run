@@ -1,0 +1,37 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start TDM
+# ==============================================================================
+TMP_FOLDER=$(mktemp -d)
+VNC_PORT="$(bashio::addon.port 5900)"
+ARCH="$(bashio::info.arch)"
+mkdir -p /share/tdm
+export HOME=/share/tdm
+# Run it only on localhost if not expose
+if bashio::var.has_value "${VNC_PORT}"; then
+    bashio::log.warning "Your direct VNC access is not protected!"
+    LOCAL_ONLY=no
+else
+    LOCAL_ONLY=yes
+fi
+
+export XDG_RUNTIME_DIR="${TMP_FOLDER}"
+export DISPLAY=":0"
+
+bashio::log.info "Starting VNC server (local/${LOCAL_ONLY})..."
+tigervncserver \
+    -name "TDM" \
+    -geometry 1920x1080 \
+    -depth 16 \
+    -localhost ${LOCAL_ONLY} \
+    -SecurityTypes None \
+    --I-KNOW-THIS-IS-INSECURE \
+    "${DISPLAY}" \
+    &> /dev/null
+
+# Wait for VNC server to start before continuing
+bashio::log.info "TDM waiting for VNC to start"
+bashio::net.wait_for 5900
+# Start TDM
+bashio::log.info "Starting tdmgr..."
+exec /usr/bin/python3 /usr/local/bin/tdmgr.py
