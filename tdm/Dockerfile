@@ -31,7 +31,7 @@ RUN apt-get update \
         wmii \
         xfonts-base \
         xfonts-scalable \
-        firefox
+        firefox-esr
 RUN apt-get install libqt5x11extras5 python3 python3-pip git -y --no-install-recommends
 RUN apt-get install libqt5gui5 -y && rm -rf /var/lib/apt/lists/* 
 RUN pip3 install --upgrade pip
