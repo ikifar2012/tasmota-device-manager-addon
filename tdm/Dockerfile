@@ -12,6 +12,7 @@ RUN apt-get update \
         iproute2 \
         iputils-ping \
         kmod \
+        libxcb \
         libcap2-bin \
         libqt5core5a \
         libqt5gui5 \
