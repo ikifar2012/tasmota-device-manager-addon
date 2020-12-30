@@ -12,6 +12,7 @@ RUN apt-get update \
         iproute2 \
         iputils-ping \
         kmod \
+        qt5-default \
         libxcb-xinerama0 \
         libcap2-bin \
         libqt5core5a \
@@ -36,6 +37,7 @@ RUN apt-get update \
 RUN apt-get install libqt5x11extras5 python3 python3-pip git -y --no-install-recommends
 RUN apt-get install libqt5gui5 -y && rm -rf /var/lib/apt/lists/* 
 RUN pip3 install --upgrade pip
+RUN pip3 install wheel
 RUN pip3 install pyqt5
 RUN pip3 install setuptools
 RUN pip3 install tdmgr
