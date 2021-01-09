@@ -32,7 +32,7 @@ tigervncserver \
 
 # Wait for VNC server to start before continuing
 bashio::log.info "TDM waiting for VNC to start"
-cat /share/tdm/.vnc/local-tdm.local.hass.io:0.log
+# cat /share/tdm/.vnc/local-tdm.local.hass.io:0.log
 bashio::net.wait_for 5900
 # Start TDM
 bashio::log.info "Starting tdmgr..."
