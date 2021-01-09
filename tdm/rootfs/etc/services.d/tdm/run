@@ -6,6 +6,7 @@ TMP_FOLDER=$(mktemp -d)
 VNC_PORT="$(bashio::addon.port 5900)"
 ARCH="$(bashio::info.arch)"
 mkdir -p /share/tdm
+DEBUG=$(bashio::config "debug")
 ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
 export HOME=/share/tdm
 # Run it only on localhost if not expose
@@ -20,6 +21,7 @@ export XDG_RUNTIME_DIR="${TMP_FOLDER}"
 export DISPLAY=":0"
 
 bashio::log.info "Starting VNC server (local/${LOCAL_ONLY})..."
+if [ "$DEBUG" = true ] ; then
 tigervncserver \
     -name "TDM" \
     -geometry 1920x1080 \
@@ -29,6 +31,17 @@ tigervncserver \
     --I-KNOW-THIS-IS-INSECURE \
     "${DISPLAY}" \
     &
+else
+tigervncserver \
+    -name "TDM" \
+    -geometry 1920x1080 \
+    -depth 16 \
+    -localhost ${LOCAL_ONLY} \
+    -SecurityTypes None \
+    --I-KNOW-THIS-IS-INSECURE \
+    "${DISPLAY}" \
+    &>/dev/null
+fi
 
 # Wait for VNC server to start before continuing
 bashio::log.info "TDM waiting for VNC to start"
