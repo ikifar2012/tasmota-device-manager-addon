@@ -6,6 +6,7 @@ TMP_FOLDER=$(mktemp -d)
 VNC_PORT="$(bashio::addon.port 5900)"
 ARCH="$(bashio::info.arch)"
 mkdir -p /share/tdm
+ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
 export HOME=/share/tdm
 # Run it only on localhost if not expose
 if bashio::var.has_value "${VNC_PORT}"; then
@@ -31,6 +32,7 @@ tigervncserver \
 
 # Wait for VNC server to start before continuing
 bashio::log.info "TDM waiting for VNC to start"
+cat /share/tdm/.vnc/local-tdm.local.hass.io:0.log
 bashio::net.wait_for 5900
 # Start TDM
 bashio::log.info "Starting tdmgr..."
