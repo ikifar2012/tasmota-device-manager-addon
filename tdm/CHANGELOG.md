@@ -1,3 +1,7 @@
+# 2021.3.2
+
+- Added `firefox-esr` for Web UI access
+
 # 2021.3.1
 
 - Hardcoded `PyQt5` to 5.14.2

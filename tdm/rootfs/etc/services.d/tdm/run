@@ -16,7 +16,7 @@ if bashio::var.has_value "${VNC_PORT}"; then
 else
     LOCAL_ONLY=yes
 fi
-
+export BROWSER=/usr/bin/firefox-esr
 export XDG_RUNTIME_DIR="${TMP_FOLDER}"
 export DISPLAY=":0"
 
