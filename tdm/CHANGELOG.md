@@ -1,7 +1,7 @@
 # 2021.5.0
 
 - Updated `tdmgr` to 0.2.10
-- Adresses #7
+- Addresses Issue #7
 
 # 2021.4.0
 
