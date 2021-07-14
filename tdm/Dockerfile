@@ -39,6 +39,6 @@ RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install wheel
 RUN python3 -m pip install pyqt5==5.14.2
 RUN python3 -m pip install setuptools
-RUN python3 -m pip install tdmgr==0.2.10
+RUN python3 -m pip install tdmgr==0.2.11
 
 COPY rootfs /
