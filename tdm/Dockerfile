@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM homeassistant/amd64-base-debian:buster
+FROM $BUILD_FROM
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -28,7 +28,7 @@ RUN apt-get update \
         tigervnc-common \
         tigervnc-standalone-server \
         wget \
-        wmii \
+        i3 \
         xfonts-base \
         xfonts-scalable \
         firefox-esr
