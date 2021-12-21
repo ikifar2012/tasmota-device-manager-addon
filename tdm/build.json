@@ -1,7 +1,6 @@
 {
   "build_from": {
-    "amd64": "homeassistant/amd64-base-debian:bullseye",
-    "armhf": "homeassistant/armhf-base-debian:bullseye"
+    "amd64": "homeassistant/amd64-base-debian:bullseye"
   },
   "args": {
   }
