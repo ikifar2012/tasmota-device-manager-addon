@@ -1,3 +1,8 @@
+# 2021.12.0
+
+- Switch to i3 window manager
+- Upgrade to Debian Bullseye
+
 # 2021.7.0
 
 - Updated `tdmgr` to 0.2.11

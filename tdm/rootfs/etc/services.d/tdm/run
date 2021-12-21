@@ -7,7 +7,7 @@ VNC_PORT="$(bashio::addon.port 5900)"
 ARCH="$(bashio::info.arch)"
 mkdir -p /share/tdm
 DEBUG=$(bashio::config "debug")
-ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
+# ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
 export HOME=/share/tdm
 # Run it only on localhost if not expose
 if bashio::var.has_value "${VNC_PORT}"; then
