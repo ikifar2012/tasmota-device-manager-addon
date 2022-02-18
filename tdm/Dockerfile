@@ -28,6 +28,7 @@ RUN apt-get update \
         tigervnc-standalone-server \
         wget \
         i3 \
+        i3status \
         xfonts-base \
         xfonts-scalable \
         firefox-esr
