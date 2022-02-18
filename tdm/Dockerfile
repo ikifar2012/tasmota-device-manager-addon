@@ -5,7 +5,6 @@ FROM $BUILD_FROM
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install dependencies
-ARG BUILD_ARCH
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         curl \

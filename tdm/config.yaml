@@ -11,7 +11,7 @@ init: false
 ingress: true
 panel_icon: mdi:application-cog
 ingress_entry: novnc/vnc_lite.html?resize=scale
-image: ikifar/tdm-ha-addon-{arch}
+image: ikifar/tdm-ha-addon
 map:
   - share:rw
 ports:
