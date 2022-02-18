@@ -5,8 +5,12 @@
 TMP_FOLDER=$(mktemp -d)
 VNC_PORT="$(bashio::addon.port 5900)"
 ARCH="$(bashio::info.arch)"
-mkdir -p /share/tdm
 DEBUG=$(bashio::config "debug")
+mkdir -p /share/tdm/.vnc
+(
+    echo "vncconfig --nowin &"
+    echo "exec i3"
+) > /share/tdm/.vnc/xstartup
 # ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
 export HOME=/share/tdm
 # Run it only on localhost if not expose
