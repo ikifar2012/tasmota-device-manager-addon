@@ -5,7 +5,6 @@ FROM $BUILD_FROM
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install dependencies
-ARG BUILD_ARCH
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         curl \
@@ -29,12 +28,13 @@ RUN apt-get update \
         tigervnc-standalone-server \
         wget \
         i3 \
+        i3status \
         xfonts-base \
         xfonts-scalable \
         firefox-esr
 
 RUN apt-get install libqt5x11extras5 python3 python3-pip git -y --no-install-recommends
-RUN apt-get install libqt5gui5 zlib1g-dev gcc g++ make -y && rm -rf /var/lib/apt/lists/* 
+RUN apt-get install libqt5gui5 zlib1g-dev gcc g++ make -y && rm -rf /var/lib/apt/lists/*
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install wheel
 RUN python3 -m pip install pyqt5==5.14.2

@@ -1,12 +1,14 @@
 name: Tasmota Device Manager
-version: '2021.12.0'
+version: '2022.2.0'
 slug: tdm
 description: GUI application to discover and monitor devices flashed with Tasmota
 arch:
   - amd64
 url: https://github.com/ikifar2012/tasmota-device-manager-addon
-startup: services
+startup: application
 boot: auto
+services:
+  - mqtt:want
 init: false
 ingress: true
 panel_icon: mdi:application-cog
@@ -18,7 +20,6 @@ ports:
   5900/tcp:
 ports_description:
   5900/tcp: TDM via VNC (Not required for Ingress. Not secure!)
-host_network: true
 options:
   debug: false
 schema:
