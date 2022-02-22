@@ -6,13 +6,30 @@ TMP_FOLDER=$(mktemp -d)
 VNC_PORT="$(bashio::addon.port 5900)"
 ARCH="$(bashio::info.arch)"
 DEBUG=$(bashio::config "debug")
-mkdir -p /share/tdm/.vnc
+export HOME='/share/tdm'
+mkdir -p ${HOME}/.vnc
 (
     echo "vncconfig --nowin &"
     echo "exec i3"
-) > /share/tdm/.vnc/xstartup
+) > ${HOME}/.vnc/xstartup
+chmod 755 ${HOME}/.vnc/xstartup
 # ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
-export HOME=/share/tdm
+
+# Get MQTT config
+if bashio::services.available "mqtt"; then
+    MQTT_HOST=$(bashio::services "mqtt" "host")
+    MQTT_PASSWORD=$(bashio::services "mqtt" "password")
+    MQTT_PORT=$(bashio::services "mqtt" "port")
+    MQTT_USER=$(bashio::services "mqtt" "username")
+    (
+        echo "[General]"
+        echo "connect_on_startup=true"
+        echo "hostname=${MQTT_HOST}"
+        echo "password=${MQTT_PASSWORD}"
+        echo "port=${MQTT_PORT}"
+        echo "username=${MQTT_USER}"
+    ) > ${HOME}/TDM/tdm.cfg
+fi
 # Run it only on localhost if not expose
 if bashio::var.has_value "${VNC_PORT}"; then
     bashio::log.warning "Your direct VNC access is not protected!"
