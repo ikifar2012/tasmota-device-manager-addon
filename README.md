@@ -9,9 +9,7 @@ This add-on can be added via my [Home Assistant Add-on repository](https://githu
 # [Documentation](https://addons.mathesonsteplock.ca/docs/addons/tdm/basic-config)
 
 # Support Me 
-[![Buy me a coffee][buymeacoffee-logo]][buymeacoffee]
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/mathesonsteplock)
 
-[buymeacoffee-logo]: https://cdn.buymeacoffee.com/buttons/default-black.png
-[buymeacoffee]: https://www.buymeacoffee.com/mathesonstep
 [here]: https://www.home-assistant.io/hassio/installing_third_party_addons/
 [deCONZ]: https://github.com/home-assistant/hassio-addons/tree/master/deconz
