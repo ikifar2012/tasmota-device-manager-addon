@@ -1,8 +1,9 @@
 #!/usr/bin/execlineb -S1
+# shellcheck shell=bash
 # ==============================================================================
-# Take down the S6 supervision tree based on service exit code
+# Take down the S6 supervision tree when nginx fails
 # ==============================================================================
-if { s6-test ${1} -ne 0 }
-if { s6-test ${1} -ne 256 }
-
-/run/s6/basedir/bin/halt
+if [[ "$1" -ne 0 ]] && [[ "$1" -ne 256 ]]; then
+  bashio::log.warning "Halting add-on"
+  /run/s6/basedir/bin/halt
+fi
