@@ -5,6 +5,7 @@
 - Automate deployments
 
 **Full Changelog**: https://github.com/ikifar2012/tasmota-device-manager-addon/compare/2022.5.0...2022.6.0
+
 # 2022.5.0
 
 - Switch to `ghcr.io`
