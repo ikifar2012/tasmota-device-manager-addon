@@ -7,7 +7,7 @@
     "commitMessageTopic": "{{depName}}",
     "regexManagers": [
       {
-        "fileMatch": ["/Dockerfile$", "/build.yaml$"],
+        "fileMatch": ["*/Dockerfile$", "*/build.yaml$"],
         "matchStringsStrategy": "any",
         "matchStrings": [
           "ARG BUILD_FROM=(?<depName>.*?):(?<currentValue>.*?)\\s+",
