@@ -8,7 +8,7 @@
     "regexManagers": [
       {
         "fileMatch": [
-          "^(.*\/)?(Dockerfile|build\\.yml)$"
+          "^(.*\/)?(Dockerfile|build\\.yaml)$"
         ],
         "matchStringsStrategy": "any",
         "matchStrings": [
