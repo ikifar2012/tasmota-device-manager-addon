@@ -7,7 +7,7 @@
     "commitMessageTopic": "{{depName}}",
     "regexManagers": [
       {
-        "matchFilePatterns": [
+        "fileMatch": [
           "^(.*\/)?(Dockerfile|build\\.yml)$"
         ],
         "matchStringsStrategy": "any",
