@@ -40,6 +40,10 @@
         "matchDatasources": ["docker"],
         "matchUpdateTypes": ["minor", "patch"],
         "automerge": true
+      },
+      {
+        "matchDatasources": ["github-tags"],
+        "automerge": true
       }
     ]
   }
