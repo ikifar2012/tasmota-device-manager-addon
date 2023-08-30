@@ -9,6 +9,7 @@ RUN apk add --no-cache \
 py3-pip=23.2.1-r0 \
 novnc=1.4.0-r0 \
 i3wm=4.22-r1 \
+i3status=2.14-r1 \
 py3-qt5=5.15.9-r3 \
 x11vnc=0.9.16-r5 \
 websockify=0.11.0-r1 \
