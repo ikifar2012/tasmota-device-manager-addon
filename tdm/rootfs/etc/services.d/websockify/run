@@ -1,10 +1,10 @@
 #!/usr/bin/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Start ozw-admin
+# Start vnc
 # ==============================================================================
 
-# Wait until ozwadmin is up and running
+# Wait until vnc is up and running
 bashio::log.info "Websockify waiting for VNC to start"
 bashio::net.wait_for 5900
 
