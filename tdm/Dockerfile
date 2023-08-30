@@ -22,5 +22,5 @@ COPY rootfs /
 # ensure that each service in services.d has executable permissions
 RUN chmod -R +x /etc/services.d/
 
-RUN pip install --no-cache-dir --no-depends \
+RUN pip install --no-cache-dir --no-deps \
 -r /tmp/requirements.txt
