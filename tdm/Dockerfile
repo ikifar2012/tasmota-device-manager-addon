@@ -3,8 +3,10 @@ FROM $BUILD_FROM
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
+# Add Repositories
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 # Install dependencies
 RUN apk add --update-cache --no-cache \
 py3-pip=23.2.1-r0 \
