@@ -9,6 +9,7 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/rep
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 # Install dependencies
 RUN apk add --update-cache --no-cache \
+build-base=0.5-r3 \
 py3-pip=23.2.1-r0 \
 novnc=1.4.0-r0 \
 i3wm=4.22-r1 \
