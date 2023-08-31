@@ -15,7 +15,7 @@ RUN apk add --update-cache --no-cache \
     i3wm=4.22-r1 \
     i3status=2.14-r1 \
     novnc=1.4.0-r0 \
-    x11vnc=0.9.16-r5 \
+    tigervnc=1.13.1-r4 \
     websockify=0.11.0-r1 \
     nginx=1.24.0-r11
 
