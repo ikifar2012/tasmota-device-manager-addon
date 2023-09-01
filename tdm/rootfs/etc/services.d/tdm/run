@@ -21,7 +21,6 @@ chmod 755 ${HOME}/.vnc/xstartup
 ) > ${HOME}/.vnc/config
 chmod 755 ${HOME}/.vnc/config
 
-# ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
 # check if i3 config exists if not copy default
 if [ ! -f ${HOME}/.config/i3/config ]; then
     mkdir -p ${HOME}/.config/i3
