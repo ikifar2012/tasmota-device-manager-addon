@@ -48,7 +48,7 @@ if bashio::var.has_value "${VNC_PORT}"; then
     LOCAL_ONLY=no
 else
     LOCAL_ONLY=yes
-    echo "localhost" > ${HOME}/.vnc/config
+    echo "localhost" >> ${HOME}/.vnc/config
 fi
 
 export BROWSER=/usr/bin/firefox-esr
