@@ -13,7 +13,7 @@ services:
 init: false
 ingress: true
 panel_icon: mdi:application-cog
-ingress_entry: novnc/vnc_lite.html?resize=scale
+ingress_entry: novnc/vnc_lite.html?scale=true
 image: ikifar/tdm-ha-addon
 map:
   - share:rw
