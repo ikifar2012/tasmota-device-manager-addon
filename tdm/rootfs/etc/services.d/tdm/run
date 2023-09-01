@@ -12,6 +12,7 @@ mkdir -p ${HOME}/.vnc
 (
     echo "vncconfig --nowin &"
     echo "exec i3"
+    echo "SecurityTypes=None"
 ) > ${HOME}/.vnc/xstartup
 chmod 755 ${HOME}/.vnc/xstartup
 # ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
@@ -37,30 +38,20 @@ if bashio::var.has_value "${VNC_PORT}"; then
     LOCAL_ONLY=no
 else
     LOCAL_ONLY=yes
+    echo "localhost" > ${HOME}/.vnc/config
 fi
+
 export BROWSER=/usr/bin/firefox-esr
 export XDG_RUNTIME_DIR="${TMP_FOLDER}"
 export DISPLAY=":0"
 
 bashio::log.info "Starting VNC server (local/${LOCAL_ONLY})..."
 if [ "$DEBUG" = true ] ; then
-tigervncserver \
-    -name "TDM" \
-    -geometry 1920x1080 \
-    -depth 16 \
-    -localhost ${LOCAL_ONLY} \
-    -SecurityTypes None \
-    --I-KNOW-THIS-IS-INSECURE \
+vncserver \
     "${DISPLAY}" \
     &
 else
-tigervncserver \
-    -name "TDM" \
-    -geometry 1920x1080 \
-    -depth 16 \
-    -localhost ${LOCAL_ONLY} \
-    -SecurityTypes None \
-    --I-KNOW-THIS-IS-INSECURE \
+vncserver \
     "${DISPLAY}" \
     &>/dev/null
 fi
@@ -71,4 +62,4 @@ bashio::net.wait_for 5900
 
 # Start TDM
 bashio::log.info "Starting tdmgr..."
-exec /usr/bin/python3 /usr/local/bin/tdmgr.py
+exec /usr/bin/python3 /usr/bin/tdmgr.py

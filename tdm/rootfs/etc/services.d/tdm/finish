@@ -1,9 +1,9 @@
 #!/usr/bin/execlineb -S1
 # shellcheck shell=bash
 # ==============================================================================
-# Take down the S6 supervision tree when tdm fails
+# Restart tdm if it fails
 # ==============================================================================
 if [[ "$1" -ne 0 ]] && [[ "$1" -ne 256 ]]; then
-  bashio::log.warning "Halting add-on"
-  /run/s6/basedir/bin/halt
+  bashio::log.warning "Restarting TDM..."
+  /run/s6/bin/s6-svc -t /run/s6/services/tdm
 fi

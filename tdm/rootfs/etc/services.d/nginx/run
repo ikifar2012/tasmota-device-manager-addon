@@ -4,8 +4,8 @@
 # Start NGINX service
 # ==============================================================================
 
-# Wait for deCONZ to start before continuing
-bashio::net.wait_for 40850
+# Wait for NGINX to start before continuing
+bashio::net.wait_for 5900
 
 bashio::log.info "Starting Nginx..."
 exec nginx

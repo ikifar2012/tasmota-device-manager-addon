@@ -12,6 +12,7 @@ RUN apk add --update-cache --no-cache \
     py3-pip=23.2.1-r0 \
     py3-qt5=5.15.9-r3 \
     py3-qtwebengine=5.15.6-r4 \
+    font-cascadia-code-nerd=3.0.2-r0 \
     i3wm=4.22-r1 \
     i3status=2.14-r1 \
     novnc=1.4.0-r0 \
@@ -22,6 +23,7 @@ RUN apk add --update-cache --no-cache \
 COPY rootfs /
 # ensure that each service in services.d has executable permissions
 RUN chmod -R +x /etc/services.d/
+RUN chmod +x 
 
 RUN pip install --no-cache-dir --no-deps \
 -r /tmp/requirements.txt
