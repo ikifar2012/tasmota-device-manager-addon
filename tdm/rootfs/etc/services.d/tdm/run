@@ -13,12 +13,14 @@ mkdir -p ${HOME}/.vnc
     echo "vncconfig --nowin &"
     echo "exec i3"
 ) > ${HOME}/.vnc/xstartup
+chmod 755 ${HOME}/.vnc/xstartup
+
 (
         echo "SecurityTypes=None"
         echo "geometry=1920x1080"
 ) > ${HOME}/.vnc/config
+chmod 755 ${HOME}/.vnc/config
 
-chmod 755 ${HOME}/.vnc/xstartup
 # ln -s /usr/lib/x86_64-linux-gnu/libxcb-util.so.0.0.0 /usr/lib/x86_64-linux-gnu/libxcb-util.so.1
 # check if i3 config exists if not copy default
 if [ ! -f ${HOME}/.config/i3/config ]; then
