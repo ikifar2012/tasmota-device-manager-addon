@@ -55,17 +55,15 @@ export BROWSER=/usr/bin/firefox-esr
 export XDG_RUNTIME_DIR="${TMP_FOLDER}"
 export DISPLAY=":0"
 
-bashio::log.info "Starting VNC server (local/${LOCAL_ONLY})..."
-if [ "$DEBUG" = true ] ; then
-vncserver \
-    "${DISPLAY}" \
-    &
+bashio::log.info "Initializing VNC server (local/${LOCAL_ONLY})..."
+# if debug is enabled, start vnc in debug mode
+if [ "${DEBUG}" == "true" ]; then
+    bashio::log.info "Starting VNC server in debug mode..."
+    /usr/bin/vncserver "$DISPLAY" &
 else
-vncserver \
-    "${DISPLAY}" \
-    &>/dev/null
+    bashio::log.info "Starting VNC server in normal mode..."
+    /usr/bin/vncserver "$DISPLAY" >/dev/null 2>&1 &
 fi
-
 # Wait for VNC server to start before continuing
 bashio::log.info "TDM waiting for VNC to start"
 bashio::net.wait_for 5900
