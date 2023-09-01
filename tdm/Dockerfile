@@ -23,7 +23,6 @@ RUN apk add --update-cache --no-cache \
 COPY rootfs /
 # ensure that each service in services.d has executable permissions
 RUN chmod -R +x /etc/services.d/
-RUN chmod +x 
 
 RUN pip install --no-cache-dir --no-deps \
 -r /tmp/requirements.txt
