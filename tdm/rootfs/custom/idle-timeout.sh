@@ -5,8 +5,10 @@ IDLE_THRESHOLD=$(bashio::config "timeout")
 
 while true; do
     IDLE_TIME=$(xprintidle /1000) # Get system idle time in seconds
-    
-    if [ "$IDLE_TIME" -ge "$IDLE_THRESHOLD" ]; then
+
+    # Check if the system has been idle for more than the threshold
+    # and if the threshold is greater than 0 if not it will be ignored
+    if [ "$IDLE_THRESHOLD" -gt 0 ] && [ "$IDLE_TIME" -ge "$IDLE_THRESHOLD" ]; then
         # Execute the s6 shutdown command or any other desired action
         /run/s6/basedir/bin/halt
     fi
