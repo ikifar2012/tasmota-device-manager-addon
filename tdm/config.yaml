@@ -23,5 +23,7 @@ ports_description:
   5900/tcp: TDM via VNC (Not required for Ingress. Not secure!)
 options:
   debug: false
+  timeout: 30
 schema:
   debug: bool
+  timeout: int

@@ -15,6 +15,7 @@ RUN apk add --update-cache --no-cache \
     font-cascadia-code-nerd=3.0.2-r0 \
     i3wm=4.22-r1 \
     i3status=2.14-r1 \
+    xprintidle=0.2.5-r1 \
     novnc=1.4.0-r0 \
     tigervnc=1.13.1-r4 \
     websockify=0.11.0-r1 \
@@ -22,7 +23,7 @@ RUN apk add --update-cache --no-cache \
 
 COPY rootfs /
 # ensure that each service in services.d has executable permissions
-RUN chmod -R +x /etc/services.d/
+RUN chmod -R +x /etc/s6-rc.d/
 
 RUN pip install --no-cache-dir --no-deps \
--r /tmp/requirements.txt
+    -r /custom/requirements.txt

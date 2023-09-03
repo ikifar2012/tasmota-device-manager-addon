@@ -24,7 +24,7 @@ chmod 755 ${HOME}/.vnc/config
 # check if i3 config exists if not copy default
 if [ ! -f ${HOME}/.config/i3/config ]; then
     mkdir -p ${HOME}/.config/i3
-    cp /tmp/i3-config ${HOME}/.config/i3/config
+    cp /custom/i3-config ${HOME}/.config/i3/config
 fi
 # Get MQTT config
 if bashio::services.available "mqtt"; then
@@ -50,7 +50,6 @@ else
     echo "localhost" >> ${HOME}/.vnc/config
 fi
 
-export BROWSER=/usr/bin/firefox-esr
 export XDG_RUNTIME_DIR="${TMP_FOLDER}"
 export DISPLAY=":0"
 
