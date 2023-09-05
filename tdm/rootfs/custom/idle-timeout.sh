@@ -2,6 +2,7 @@
 # shellcheck shell=bash
 
 IDLE_THRESHOLD=$(bashio::config "timeout")
+export DISPLAY=":0"
 
 while true; do
     # Get the current date and time
