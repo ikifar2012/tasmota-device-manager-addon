@@ -12,6 +12,8 @@ services:
   - mqtt:want
 init: false
 ingress: true
+homeassistant_api: true
+hassio_role: homeassistant
 panel_icon: mdi:application-cog
 ingress_entry: novnc/vnc_lite.html?scale=true
 image: ikifar/tdm-ha-addon
@@ -24,6 +26,8 @@ ports_description:
 options:
   debug: false
   timeout: 30
+  display_resolution: 1920x1080
 schema:
   debug: bool
   timeout: int
+  display_resolution: str

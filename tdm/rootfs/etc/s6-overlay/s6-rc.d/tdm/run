@@ -15,10 +15,10 @@ mkdir -p ${HOME}/TDM
     echo "exec i3"
 ) > ${HOME}/.vnc/xstartup
 chmod 755 ${HOME}/.vnc/xstartup
-
+DISPLAY_RESOLUTION="$(bashio::config "display_resolution" "1920x1080")"
 (
         echo "SecurityTypes=None"
-        echo "geometry=1920x1080"
+        echo "geometry=${DISPLAY_RESOLUTION}"
 ) > ${HOME}/.vnc/config
 chmod 755 ${HOME}/.vnc/config
 
