@@ -20,7 +20,7 @@ while true; do
 
     # Check if the system has been idle for more than the threshold
     # and if the threshold is greater than 0 if not it will be ignored
-    if [ "$IDLE_THRESHOLD" -gt 0 ] && [ "$IDLE_TIME" -ge "$IDLE_THRESHOLD" ]; then
+    if [ $IDLE_TIME_MIN -gt $IDLE_THRESHOLD ] && [ $IDLE_THRESHOLD -gt 0 ]; then
         # Execute the s6 shutdown command or any other desired action
         # send a notification to home assistant
         bashio::log.info "System has been idle for $IDLE_TIME_MIN minutes, shutting down..."
