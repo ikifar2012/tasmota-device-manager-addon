@@ -9,6 +9,7 @@ ARCH="$(bashio::info.arch)"
 DEBUG=$(bashio::config "debug")
 export HOME='/share/tdm'
 mkdir -p ${HOME}/.vnc
+mkdir -p ${HOME}/TDM
 (
     echo "vncconfig --nowin &"
     echo "exec i3"
