@@ -9,7 +9,7 @@ while true; do
     current_datetime=$(date +"%Y-%m-%d %H:%M:%S")
 
     # Get the CPU usage percentage
-    cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | awk -F. '{print $1}')
+    cpu_usage=$(awk '/^cpu / {print int(($2+$4)*100/($2+$4+$5))}' /proc/stat)
 
     # Get the available RAM in megabytes
     available_ram=$(free -m | awk '/Mem:/ {print $NF}')
@@ -32,7 +32,7 @@ while true; do
         /run/s6/basedir/bin/halt
     fi
     # Create the status message
-    status_message=" $current_datetime | CPU: $cpu_usage% | RAM: $available_ram MB | IDLE TIMEOUT: $IDLE_TIME_MIN MIN"
+    status_message=" $current_datetime | CPU: $cpu_usage% | RAM: $available_ram MB | IDLE: $IDLE_TIME_MIN MIN"
 
     # Send the status message to the i3 status bar
     echo "$status_message"

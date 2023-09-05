@@ -186,7 +186,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command "/usr/bin/with-contenv bashio /custom/idle-timeout.sh"
+    status_command "bashio /custom/idle-timeout.sh"
     colors {
         background #333333
         separator #666666
