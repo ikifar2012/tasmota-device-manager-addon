@@ -24,6 +24,7 @@ RUN apk add --update-cache --no-cache \
 COPY rootfs /
 # ensure that each service in services.d has executable permissions
 RUN chmod -R +x /etc/s6-overlay/s6-rc.d/
+RUN chmod +x /custom/*
 
 RUN pip install --no-cache-dir --no-deps \
     -r /custom/requirements.txt
