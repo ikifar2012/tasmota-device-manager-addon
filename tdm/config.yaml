@@ -27,7 +27,9 @@ options:
   debug: false
   timeout: 30
   display_resolution: 1920x1080
+  i3_manual_config: false
 schema:
   debug: bool
   timeout: int
   display_resolution: str
+  i3_manual_config: bool

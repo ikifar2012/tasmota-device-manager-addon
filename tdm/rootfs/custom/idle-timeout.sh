@@ -14,7 +14,7 @@ while true; do
     # Get the available RAM in megabytes
     available_ram=$(free -m | awk '/Mem:/ {print $NF}')
 
-    IDLE_TIME=$(xprintidle) 
+    IDLE_TIME=$(xprintidle)
     # Get system idle time in minutes
     IDLE_TIME_MIN=$((IDLE_TIME/1000/60))
 
@@ -27,7 +27,9 @@ while true; do
         bashio::log.info "System has been idle for $IDLE_TIME_MIN minutes, shutting down..."
         message="System has been idle for $IDLE_TIME_MIN minutes, shutting down..."
         title="Tasmota Device Manager - Idle Timeout"
-        ret=ret=$(bashio::api.supervisor POST /core/api/services/persistent_notification/create \
+        ret1=$(bashio::api.supervisor POST /core/api/events/tdm_shutdown \
+        "{\"message\":\"${message}\", \"title\":\"${title}\", \"notification_id\":\"tdm\"}")
+        ret2=$(bashio::api.supervisor POST /core/api/services/persistent_notification/create \
         "{\"message\":\"${message}\", \"title\":\"${title}\", \"notification_id\":\"tdm\"}")
         /run/s6/basedir/bin/halt
     fi

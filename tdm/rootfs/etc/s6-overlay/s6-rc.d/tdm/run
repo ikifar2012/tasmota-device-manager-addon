@@ -27,20 +27,30 @@ if [ ! -f ${HOME}/.config/i3/config ]; then
     mkdir -p ${HOME}/.config/i3
     cp /custom/i3-config ${HOME}/.config/i3/config
 fi
-# Get MQTT config
-if bashio::services.available "mqtt"; then
-    MQTT_HOST=$(bashio::services "mqtt" "host")
-    MQTT_PASSWORD=$(bashio::services "mqtt" "password")
-    MQTT_PORT=$(bashio::services "mqtt" "port")
-    MQTT_USER=$(bashio::services "mqtt" "username")
-    (
-        echo "[General]"
-        echo "connect_on_startup=true"
-        echo "hostname=${MQTT_HOST}"
-        echo "password=${MQTT_PASSWORD}"
-        echo "port=${MQTT_PORT}"
-        echo "username=${MQTT_USER}"
-    ) > ${HOME}/TDM/tdm.cfg
+MANUAL_CONFIG="$(bashio::config "i3_manual_config")"
+if [ "${MANUAL_CONFIG}" == "true" ]; then
+    bashio::log.info "Manual config enabled, skipping autoconfig"
+else
+    bashio::log.info "Autoconfig enabled, running autoconfig"
+    cp /custom/i3-config ${HOME}/.config/i3/config
+fi
+# if the tdm config file does not exist, create it
+if [ ! -f ${HOME}/TDM/tdm.cfg ]; then
+    # Get MQTT config
+    if bashio::services.available "mqtt"; then
+        MQTT_HOST=$(bashio::services "mqtt" "host")
+        MQTT_PASSWORD=$(bashio::services "mqtt" "password")
+        MQTT_PORT=$(bashio::services "mqtt" "port")
+        MQTT_USER=$(bashio::services "mqtt" "username")
+        (
+            echo "[General]"
+            echo "connect_on_startup=true"
+            echo "hostname=${MQTT_HOST}"
+            echo "password=${MQTT_PASSWORD}"
+            echo "port=${MQTT_PORT}"
+            echo "username=${MQTT_USER}"
+        ) > ${HOME}/TDM/tdm.cfg
+    fi
 fi
 # Run it only on localhost if not expose
 if bashio::var.has_value "${VNC_PORT}"; then

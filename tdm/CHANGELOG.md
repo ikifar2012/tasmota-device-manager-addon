@@ -1,3 +1,13 @@
+# 2023.9.0
+
+## MAJOR UPDATE PLEASE READ DOCUMENTATION BEFORE UPDATING
+
+- Switch from Debian to Alpine (Smaller image size, faster boot times)
+- Added timeout for addon
+- Added Screen Resolution option
+- Added i3 default config
+- Persist tdm config across reboots
+
 # 2022.6.0
 
 - Update git index permissions to hopefully fix crash on start-up
