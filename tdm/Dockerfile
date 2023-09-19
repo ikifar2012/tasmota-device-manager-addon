@@ -10,7 +10,7 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repos
 # Install dependencies
 RUN apk add --update-cache --no-cache \
     py3-pip=23.2.1-r0 \
-    py3-qt5=5.15.9-r3 \
+    py3-qt5=5.15.9-r4 \
     py3-qtwebengine=5.15.6-r4 \
     font-cascadia-code-nerd=3.0.2-r0 \
     i3wm=4.22-r1 \
