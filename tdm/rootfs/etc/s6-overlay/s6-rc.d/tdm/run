@@ -79,4 +79,4 @@ bashio::net.wait_for 5900
 
 # Start TDM
 bashio::log.info "Starting tdmgr..."
-exec /usr/bin/python3 /usr/bin/tdmgr.py
+exec /usr/bin/python3 /bin/tdm/tdmgr.py

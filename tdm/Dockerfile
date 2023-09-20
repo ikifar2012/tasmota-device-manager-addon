@@ -22,6 +22,8 @@ RUN apk add --update-cache --no-cache \
     nginx=1.24.0-r11
 
 COPY rootfs /
+# git clone
+RUN git clone https://github.com/jziolkowski/tdm.git /bin/tdm --branch develop
 # ensure that each service in services.d has executable permissions
 RUN chmod -R +x /etc/s6-overlay/s6-rc.d/
 RUN chmod +x /custom/*
